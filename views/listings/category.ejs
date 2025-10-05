@@ -1,0 +1,23 @@
+<% layout('/layouts/biolerplate') %>
+<div class="container mt-4">
+  <h2 class="text-center mb-4"><%= category.toUpperCase() %> Listings</h2>
+
+  <div class="row">
+    <% if (listings.length === 0) { %>
+      <p class="text-center">No listings found for this category.</p>
+    <% } else { %>
+      <% listings.forEach(listing => { %>
+        <div class="col-md-4 mb-4">
+          <div class="card shadow-sm">
+            <img src="<%= listing.image.url %>" class="card-img-top" alt="<%= listing.title %>">
+            <div class="card-body">
+              <h5 class="card-title"><%= listing.title %></h5>
+              <p class="card-text">₹<%= listing.price %> / night</p>
+              <a href="/listings/<%= listing._id %>" class="btn btn-dark">View</a>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    <% } %>
+  </div>
+</div>
